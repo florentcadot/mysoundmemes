@@ -5,7 +5,8 @@
   >
     <q-list class="column items-center">
 
-      <q-item style="width:280px" class="q-mt-sm">
+      <q-item style="width:280px"
+              class="q-mt-sm">
         <q-input
           v-model="form.title"
           filled
@@ -18,7 +19,8 @@
         />
       </q-item>
 
-      <q-item style="width:280px" class="q-mt-sm">
+      <q-item style="width:280px"
+              class="q-mt-sm">
         <q-input
           label="Color *"
           filled
@@ -28,8 +30,10 @@
           dense
         >
           <template v-slot:append>
-            <q-icon name="colorize" class="cursor-pointer">
-              <q-popup-proxy transition-show="scale" transition-hide="scale">
+            <q-icon name="colorize"
+                    class="cursor-pointer">
+              <q-popup-proxy transition-show="scale"
+                             transition-hide="scale">
                 <q-color v-model="form.color" />
               </q-popup-proxy>
             </q-icon>
@@ -37,7 +41,8 @@
         </q-input>
       </q-item>
 
-      <q-item style="width:280px" class="q-mt-sm">
+      <q-item style="width:280px"
+              class="q-mt-sm">
         <q-file filled
                 v-model="form.avatar"
                 label="Image"
@@ -52,7 +57,8 @@
         </q-file>
       </q-item>
 
-      <q-item style="width:280px" class="q-mt-lg">
+      <q-item style="width:280px"
+              class="q-mt-lg">
         <q-btn label="Create"
                type="submit"
                color="secondary"
@@ -68,23 +74,22 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-import { CreateBoardViewModel } from 'src/app/adapter/primary/views/view-model/board/create-board.view-model';
+import { Vue, Component } from 'vue-property-decorator'
+import { CreateBoardViewModel }
+  from 'src/app/adapter/primary/views/view-model/board/create-board.view-model'
 
 @Component({
-  name: 'create-board-form'
+  name: 'create-board-form',
 })
 export default class CreateBoardFormComponent extends Vue {
-
   form: CreateBoardViewModel = {
     title: '',
     color: '',
-    avatar: null
-  };
-
-  onSubmit() {
-    this.$emit('submitForm', this.form);
+    avatar: null,
   }
 
+  onSubmit () {
+    this.$emit('submitForm', this.form)
+  }
 }
 </script>

@@ -1,8 +1,6 @@
-# compiled output
-/back/dist
-/back/node_modules
-/front/node_modules
-/front/dist
+/*/node_modules
+/*/dist
+db/data
 
 # Logs
 logs
@@ -60,6 +58,3 @@ logs
 /front/npm-debug.log*
 /front/yarn-debug.log*
 /front/yarn-error.log*
-
-
-/legacy

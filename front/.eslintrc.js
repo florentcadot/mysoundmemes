@@ -1,17 +1,15 @@
 const { resolve } = require('path');
+
 module.exports = {
   // https://eslint.org/docs/user-guide/configuring#configuration-cascading-and-hierarchy
   // This option interrupts the configuration hierarchy at this file
   // Remove this if you have an higher level ESLint config file (it usually happens into a monorepos)
   root: true,
 
-  // https://eslint.vuejs.org/user-guide/#how-to-use-custom-parser
+  // https://eslint.vuejs.org/user-guide/#how-to-use-a-custom-parser
   // Must use parserOptions instead of "parser" to allow vue-eslint-parser to keep working
   // `parser: 'vue-eslint-parser'` is already included with any 'plugin:vue/**' config and should be omitted
   parserOptions: {
-    // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser#configuration
-    // https://github.com/TypeStrong/fork-ts-checker-webpack-plugin#eslint
-    // Needed to make the parser take into account 'vue' files
     extraFileExtensions: ['.vue'],
     parser: '@typescript-eslint/parser',
     project: resolve(__dirname, './tsconfig.json'),
@@ -21,7 +19,10 @@ module.exports = {
   },
 
   env: {
-    browser: true
+    browser: true,
+    es2021: true,
+    node: true,
+    'vue/setup-compiler-macros': true
   },
 
   // Rules order is important, please avoid shuffling them
@@ -37,14 +38,13 @@ module.exports = {
 
     // Uncomment any of the lines below to choose desired strictness,
     // but leave only one uncommented!
-    // See https://eslint.vuejs.org/rules/#available-rules
+    // See https://eslint.vuejs.org/rules/#available-rules (look for Vuejs 2 ones)
     'plugin:vue/essential', // Priority A: Essential (Error Prevention)
     // 'plugin:vue/strongly-recommended', // Priority B: Strongly Recommended (Improving Readability)
     // 'plugin:vue/recommended', // Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
 
-    // https://github.com/prettier/eslint-config-prettier#installation
-    // usage with Prettier, provided by 'eslint-config-prettier'.
-    'prettier'
+    'standard'
+
   ],
 
   plugins: [
@@ -55,9 +55,7 @@ module.exports = {
     // required to lint *.vue files
     'vue',
 
-    // https://github.com/typescript-eslint/typescript-eslint/issues/389#issuecomment-509292674
-    // Prettier has not been included as plugin to avoid performance impact
-    // add it as an extension for your IDE
+
   ],
 
   globals: {
@@ -71,19 +69,78 @@ module.exports = {
 
   // add your custom rules here
   rules: {
-    'prefer-promise-reject-errors': 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'object-curly-spacing': [2, 'always'],
+    'max-len': [2, 100, 4, { 'ignoreUrls': true }],
+    'quotes': [2, 'single', { 'allowTemplateLiterals': true }],
+    'arrow-spacing': ['error', { 'before': true, 'after': true }],
+    'eol-last': ['error', 'always'],
+    'no-multiple-empty-lines': ['error', {
+      'max': 2,
+      'maxEOF': 0,
+      'maxBOF': 0,
+    }],
+    'no-trailing-spaces': ['error', { 'ignoreComments': true }],
+    'prefer-arrow-callback': 2,
+    'prefer-const': 2,
+    'no-var': 2,
+    'no-useless-constructor': 'off',
+    'no-useless-catch': 'off',
 
-    // TypeScript
-    quotes: ['warn', 'single', { avoidEscape: true }],
-    '@typescript-eslint/explicit-function-return-type': 'off',
+    // Vue
+    'vue/require-default-prop': 'off',
+    'vue/html-indent': ['error', 2, {
+      'attribute': 1,
+      'baseIndent': 1,
+      'closeBracket': 0,
+      'alignAttributesVertically': true,
+      'ignores': [],
+    }],
+    'vue/require-explicit-emits': ['error', {
+      'allowProps': false,
+    }],
+    'vue/component-name-in-template-casing': ['error', 'PascalCase', {
+      'registeredComponentsOnly': true,
+      'ignores': [],
+    }],
+    'no-use-before-define': 'off',
+    'no-unused-expressions': 'off',
+    'vue/multi-word-component-names': 'off',
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": {
+        "max": 1
+      },
+      "multiline": {
+        "max": 1
+      }
+    }],
+    'semi': 'error',
+
+    // Typescript
+    '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
+    'indent': 'off',
+    '@typescript-eslint/indent': ['error', 2],
+    'comma-dangle': 'off',
+    '@typescript-eslint/comma-dangle': [2, {
+      'arrays': 'always-multiline',
+      'objects': 'always-multiline',
+      'imports': 'always-multiline',
+      'exports': 'always-multiline',
+      'functions': 'always-multiline',
+      'enums': 'always-multiline',
+    }],
+    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+    'comma-spacing': 'off',
+    '@typescript-eslint/comma-spacing': ['error', { 'before': false, 'after': true }],
 
-    // allow debugger during development only
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-
-    '@typescript-eslint/no-floating-promises': ['off'],
-    '@typescript-eslint/no-unsafe-member-access': ['off'],
-    '@typescript-eslint/no-non-null-assertion': ['off'],
-    '@typescript-eslint/restrict-template-expressions': ['off']
+    '@typescript-eslint/no-unsafe-call': 'warn',
+    '@typescript-eslint/no-unsafe-member-access': 'warn',
+    '@typescript-eslint/no-unsafe-assignment': 'warn',
+    '@typescript-eslint/no-floating-promises': 'off',
+    '@typescript-eslint/no-unsafe-argument': 'warn',
   }
 }

@@ -6,7 +6,8 @@
 
     <q-list class="column items-center">
 
-      <q-item style="width:280px" class="q-mt-sm">
+      <q-item style="width:280px"
+              class="q-mt-sm">
         <q-input
           v-model="form.title"
           filled
@@ -19,7 +20,8 @@
         />
       </q-item>
 
-      <q-item style="width:280px" class="q-mt-sm">
+      <q-item style="width:280px"
+              class="q-mt-sm">
         <q-input
           filled
           v-model="form.color"
@@ -28,8 +30,10 @@
           dense
         >
           <template v-slot:append>
-            <q-icon name="colorize" class="cursor-pointer">
-              <q-popup-proxy transition-show="scale" transition-hide="scale">
+            <q-icon name="colorize"
+                    class="cursor-pointer">
+              <q-popup-proxy transition-show="scale"
+                             transition-hide="scale">
                 <q-color v-model="form.color" />
               </q-popup-proxy>
             </q-icon>
@@ -37,7 +41,8 @@
         </q-input>
       </q-item>
 
-      <q-item style="width:280px" class="q-mt-sm">
+      <q-item style="width:280px"
+              class="q-mt-sm">
         <q-file filled
                 v-model="form.avatar"
                 label="Image"
@@ -52,7 +57,8 @@
         </q-file>
       </q-item>
 
-      <q-item style="width:280px" class="q-mt-lg">
+      <q-item style="width:280px"
+              class="q-mt-lg">
         <q-btn label="Update"
                type="submit"
                color="secondary"
@@ -66,24 +72,24 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Board } from 'src/app/core/domain/board/board';
-import { UpdateBoardViewModel } from 'src/app/adapter/primary/views/view-model/board/update-board.view-model';
+import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Board } from 'src/app/core/domain/board/board'
+import { UpdateBoardViewModel }
+  from 'src/app/adapter/primary/views/view-model/board/update-board.view-model'
 
 @Component({
-  name: 'update-board-form'
+  name: 'update-board-form',
 })
 export default class UpdateBoardFormComponent extends Vue {
-
   @Prop({ required: true, type: Object }) readonly boardToUpdate: Board | undefined
 
-  mounted() {
+  mounted () {
     if (this.boardToUpdate?.id) {
       this.form = {
         id: this.boardToUpdate.id,
         color: this.boardToUpdate.color,
-        title: this.boardToUpdate.title
-      };
+        title: this.boardToUpdate.title,
+      }
     }
   }
 
@@ -91,12 +97,11 @@ export default class UpdateBoardFormComponent extends Vue {
     id: '',
     title: '',
     color: '',
-    avatar: null
-  };
-
-  onSubmit() {
-    this.$emit('submitForm', this.form);
+    avatar: null,
   }
 
+  onSubmit () {
+    this.$emit('submitForm', this.form)
+  }
 }
 </script>

@@ -1,4 +1,4 @@
-export interface LoginUserViewModel {
+export type LoginUserViewModel = {
   email: string
   password: string
 }

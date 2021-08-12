@@ -1,11 +1,11 @@
-import { UserRole } from 'src/app/core/domain/user/user';
+import { UserRole } from 'src/app/core/domain/user/user'
 
-export interface LoginUserRequestDto {
+export type LoginUserRequestDto = {
   username: string
   password: string
 }
 
-export interface LoginUserResponseDto {
+export type LoginUserResponseDto = {
   accessToken: string
   id: string
   firstname: string

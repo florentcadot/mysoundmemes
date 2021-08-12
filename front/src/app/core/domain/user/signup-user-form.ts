@@ -1,4 +1,4 @@
-export interface SignupUserForm {
+export type SignupUserForm = {
   firstname: string
   lastname: string
   email: string

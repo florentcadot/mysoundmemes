@@ -1,10 +1,9 @@
-
-export interface SoundFile {
+export type SoundFile = {
   key: string
   url?: string
 }
 
-interface Props {
+type Props = {
   id?: string
   boardId: string
   userId: string
@@ -13,27 +12,25 @@ interface Props {
 }
 
 export class BoardSound {
+  constructor (private props: Props) {}
 
-  constructor(private props: Props) {}
-
-  get id(): string | undefined {
+  get id (): string | undefined {
     return this.props.id
   }
 
-  get boardId(): string {
+  get boardId (): string {
     return this.props.boardId
   }
 
-  get userId(): string {
+  get userId (): string {
     return this.props.userId
   }
 
-  get title(): string {
+  get title (): string {
     return this.props.title
   }
 
-  get file(): string {
+  get file (): string {
     return this.props.file
   }
-
 }

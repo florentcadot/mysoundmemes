@@ -1,16 +1,19 @@
 import {
   Body,
   Controller,
-  HttpCode, HttpException,
+  Get,
+  HttpCode,
+  HttpException,
   HttpStatus,
   Inject,
   Param,
   Patch,
   Post,
-  Req, UploadedFile,
+  Req,
+  UploadedFile,
   UseGuards,
-  UseInterceptors
-} from '@nestjs/common';
+  UseInterceptors,
+} from '@nestjs/common'
 import { RealValidatorPipeService } from '../../secondary/service/validator-pipe/real.validator-pipe.service';
 import { GetUserDto, GetUserProfileResponseDto } from '../dto/user/get-user.dto';
 import { GetUser } from '../../../core/use-case/user/get-user.use-case';
@@ -33,6 +36,8 @@ import { ForgetUserPasswordDto } from '../dto/user/forget-user-password.dto';
 import { ForgetUserPassword } from '../../../core/use-case/user/forget-user-password.use-case';
 import { ResetUserPasswordDto } from '../dto/user/reset-user-password.dto';
 import { ResetUserPassword } from '../../../core/use-case/user/reset-user-password.use-case';
+import {GetBoardResponseDto} from '../dto/board/get-board.dto'
+import {BoardMapper} from '../../mapper/board.mapper'
 
 @Controller('/api/user')
 export class UserController {
@@ -50,6 +55,12 @@ export class UserController {
     @Inject(resetUserPasswordToken)
       private resetUserPassword: ResetUserPassword
   ){}
+
+  @Get('/ping')
+  @HttpCode(HttpStatus.OK)
+  ping(): string {
+    return 'pong'
+  }
 
   @Post('/profile')
   @HttpCode(HttpStatus.OK)

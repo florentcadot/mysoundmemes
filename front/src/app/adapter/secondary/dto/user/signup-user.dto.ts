@@ -1,4 +1,4 @@
-export interface SignupUserRequestDto {
+export type SignupUserRequestDto = {
   firstname: string
   lastname: string
   email: string

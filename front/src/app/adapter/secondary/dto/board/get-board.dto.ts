@@ -1,4 +1,4 @@
-export interface GetBoardResponseDto {
+export type GetBoardResponseDto = {
   id: string
   userId: string
   title: string

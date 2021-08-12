@@ -5,7 +5,8 @@
       <div class="home-page-content">
 
         <div class="row justify-center">
-          <img class="login-img"  src="../assets/sb-logo-primary.png">
+          <img class="login-img"
+               src="../assets/sb-logo-primary.png">
         </div>
 
         <div class="row justify-center">
@@ -22,17 +23,18 @@
 
             <q-item style="width:280px">
               <q-input
-              v-model="loginForm.email"
-              filled
-              label="Email *"
-              type="email"
-              label-color="primary"
-              bg-color="secondary"
-              dense
+                v-model="loginForm.email"
+                filled
+                label="Email *"
+                type="email"
+                label-color="primary"
+                bg-color="secondary"
+                dense
               />
             </q-item>
 
-            <q-item style="width:280px" class="q-mt-sm">
+            <q-item style="width:280px"
+                    class="q-mt-sm">
               <q-input
                 v-model="loginForm.password"
                 filled
@@ -52,26 +54,35 @@
               </q-input>
             </q-item>
 
-            <q-item style="width:280px" class="q-mt-lg">
-                <q-btn label="Login"
-                       type="submit"
-                       color="secondary"
-                       text-color="dark"
-                       :disable="loginForm.password.length === 0 || loginForm.email.length === 0 "
-                />
-                <q-btn label="Reset"
-                       type="reset"
-                       color="primary"
-                       text-color="secondary"
-                       flat
-                       class="q-ml-sm" />
+            <q-item style="width:280px"
+                    class="q-mt-lg">
+              <q-btn label="Login"
+                     type="submit"
+                     color="secondary"
+                     text-color="dark"
+                     :disable="loginForm.password.length === 0 || loginForm.email.length === 0 "
+              />
+              <q-btn label="Reset"
+                     type="reset"
+                     color="primary"
+                     text-color="secondary"
+                     flat
+                     class="q-ml-sm" />
             </q-item>
 
-            <q-item style="width:280px" clickable exact v-ripple @click="toForgetPassword">
+            <q-item style="width:280px"
+                    clickable
+                    exact
+                    v-ripple
+                    @click="toForgetPassword">
               <q-item-section>Forget password ?</q-item-section>
             </q-item>
 
-            <q-item style="width:280px" clickable to="/signup" exact v-ripple>
+            <q-item style="width:280px"
+                    clickable
+                    to="/signup"
+                    exact
+                    v-ripple>
               <q-item-section>Sign up</q-item-section>
             </q-item>
 
@@ -86,42 +97,40 @@
 
 <script lang="ts">
 
-import { Vue, Component } from 'vue-property-decorator';
-import { UserStore } from 'src/store/user.store';
-import { getModule } from 'vuex-module-decorators';
-import { LoginUserViewModel } from 'src/app/adapter/primary/views/view-model/user/login-user.view-model';
+import { Vue, Component } from 'vue-property-decorator'
+import { UserStore } from 'src/store/user.store'
+import { getModule } from 'vuex-module-decorators'
+import { LoginUserViewModel }
+  from 'src/app/adapter/primary/views/view-model/user/login-user.view-model'
 
 @Component
 export default class LoginPage extends Vue {
-
-  get userStore(): UserStore {
-    return getModule(UserStore, this.$store);
+  get userStore (): UserStore {
+    return getModule(UserStore, this.$store)
   }
 
-  isPwd = true;
+  isPwd = true
 
   loginForm: LoginUserViewModel = {
     email: '',
-    password: ''
-  };
+    password: '',
+  }
 
 
-  onSubmit() {
+  onSubmit () {
     this.userStore.login(this.loginForm)
   }
 
 
-  onReset() {
+  onReset () {
     this.loginForm = {
       email: '',
-      password: ''
-    };
+      password: '',
+    }
   }
 
-  toForgetPassword() {
+  toForgetPassword () {
     this.$router.push({ path: '/forget-password', query: { email: this.loginForm.email } })
   }
-
-
 }
 </script>

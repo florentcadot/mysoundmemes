@@ -1,34 +1,10 @@
-
-# Compiled output
-
-/node_modules
-/dist
-
-# OS
-.DS_Store
-
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-
 .DS_Store
 .thumbs.db
+node_modules
 
 # Quasar core related directories
 .quasar
+/dist
 
 # Cordova related directories and files
 /src-cordova/node_modules
@@ -45,9 +21,13 @@
 /src-bex/js/core
 
 # Log files
-/npm-debug.log*
-/yarn-debug.log*
-/yarn-error.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-
-./legacy
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

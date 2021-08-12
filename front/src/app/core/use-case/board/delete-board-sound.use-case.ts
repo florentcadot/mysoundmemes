@@ -1,24 +1,22 @@
-import { BoardRepository } from 'src/app/core/port/repository/board.repository.port';
-import { inject, injectable } from 'inversify';
+import { BoardRepository } from 'src/app/core/port/repository/board.repository.port'
+import { inject, injectable } from 'inversify'
 
-export interface DeleteBoardSoundUseCase {
+export type DeleteBoardSoundUseCase = {
   execute(id: string): Promise<void>
 }
 
 @injectable()
 export class DeleteBoardSound implements DeleteBoardSoundUseCase {
-
-  constructor(
+  constructor (
     @inject('BoardRepository')
     private boardRepository: BoardRepository,
-    ) {}
+  ) {}
 
-  async execute(id: string): Promise<void> {
+  async execute (id: string): Promise<void> {
     try {
       await this.boardRepository.deleteBoardSound(id)
-    } catch (e){
+    } catch (e) {
       throw e
-    }}
-
+    }
+  }
 }
-

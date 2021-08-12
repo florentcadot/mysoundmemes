@@ -1,4 +1,4 @@
-export interface LoadingService {
+export type LoadingService = {
   show(): void
   hide(): void
 }

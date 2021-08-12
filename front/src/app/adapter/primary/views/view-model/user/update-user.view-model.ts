@@ -1,4 +1,4 @@
-export interface UpdateUserViewModel {
+export type UpdateUserViewModel = {
   firstname?: string
   lastname?: string
   email?: string

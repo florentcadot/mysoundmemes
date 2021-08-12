@@ -5,7 +5,8 @@
   >
     <q-list class="column items-center">
 
-      <q-item style="width:280px" class="q-mt-sm">
+      <q-item style="width:280px"
+              class="q-mt-sm">
         <q-input
           v-model="form.firstname"
           filled
@@ -18,7 +19,8 @@
         />
       </q-item>
 
-      <q-item style="width:280px" class="q-mt-sm">
+      <q-item style="width:280px"
+              class="q-mt-sm">
         <q-input
           v-model="form.lastname"
           filled
@@ -31,7 +33,8 @@
         />
       </q-item>
 
-      <q-item style="width:280px" class="q-mt-sm">
+      <q-item style="width:280px"
+              class="q-mt-sm">
         <q-input
           v-model="form.email"
           filled
@@ -44,45 +47,46 @@
         />
       </q-item>
 
-<!--      <q-item style="width:280px" class="q-mt-sm">-->
-<!--        <q-input v-model="form.oldPassword"-->
-<!--                 filled-->
-<!--                 :type="isPwd ? 'password' : 'text'"-->
-<!--                 label="Current password"-->
-<!--                 label-color="primary"-->
-<!--                 bg-color="secondary"-->
-<!--                 dense-->
-<!--        >-->
-<!--          <template v-slot:append>-->
-<!--            <q-icon-->
-<!--              :name="isPwd ? 'visibility_off' : 'visibility'"-->
-<!--              class="cursor-pointer"-->
-<!--              @click="isPwd = !isPwd"-->
-<!--            />-->
-<!--          </template>-->
-<!--        </q-input>-->
-<!--      </q-item>-->
+      <!--      <q-item style="width:280px" class="q-mt-sm">-->
+      <!--        <q-input v-model="form.oldPassword"-->
+      <!--                 filled-->
+      <!--                 :type="isPwd ? 'password' : 'text'"-->
+      <!--                 label="Current password"-->
+      <!--                 label-color="primary"-->
+      <!--                 bg-color="secondary"-->
+      <!--                 dense-->
+      <!--        >-->
+      <!--          <template v-slot:append>-->
+      <!--            <q-icon-->
+      <!--              :name="isPwd ? 'visibility_off' : 'visibility'"-->
+      <!--              class="cursor-pointer"-->
+      <!--              @click="isPwd = !isPwd"-->
+      <!--            />-->
+      <!--          </template>-->
+      <!--        </q-input>-->
+      <!--      </q-item>-->
 
-<!--      <q-item style="width:280px" class="q-mt-sm">-->
-<!--        <q-input v-model="form.newPassword"-->
-<!--                 filled-->
-<!--                 :type="isPwd ? 'password' : 'text'"-->
-<!--                 label="New password"-->
-<!--                 label-color="primary"-->
-<!--                 bg-color="secondary"-->
-<!--                 dense-->
-<!--        >-->
-<!--          <template v-slot:append>-->
-<!--            <q-icon-->
-<!--              :name="isPwd ? 'visibility_off' : 'visibility'"-->
-<!--              class="cursor-pointer"-->
-<!--              @click="isPwd = !isPwd"-->
-<!--            />-->
-<!--          </template>-->
-<!--        </q-input>-->
-<!--      </q-item>-->
+      <!--      <q-item style="width:280px" class="q-mt-sm">-->
+      <!--        <q-input v-model="form.newPassword"-->
+      <!--                 filled-->
+      <!--                 :type="isPwd ? 'password' : 'text'"-->
+      <!--                 label="New password"-->
+      <!--                 label-color="primary"-->
+      <!--                 bg-color="secondary"-->
+      <!--                 dense-->
+      <!--        >-->
+      <!--          <template v-slot:append>-->
+      <!--            <q-icon-->
+      <!--              :name="isPwd ? 'visibility_off' : 'visibility'"-->
+      <!--              class="cursor-pointer"-->
+      <!--              @click="isPwd = !isPwd"-->
+      <!--            />-->
+      <!--          </template>-->
+      <!--        </q-input>-->
+      <!--      </q-item>-->
 
-      <q-item style="width:280px" class="q-mt-sm">
+      <q-item style="width:280px"
+              class="q-mt-sm">
         <q-file filled
                 v-model="form.file"
                 label="Photo"
@@ -97,7 +101,8 @@
         </q-file>
       </q-item>
 
-      <q-item style="width:280px" class="q-mt-lg">
+      <q-item style="width:280px"
+              class="q-mt-lg">
         <q-btn label="Update"
                type="submit"
                color="secondary"
@@ -112,18 +117,18 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import { UpdateUserViewModel } from 'src/app/adapter/primary/views/view-model/user/update-user.view-model';
-import { User } from 'src/app/core/domain/user/user';
+import { Vue, Component, Prop } from 'vue-property-decorator'
+import { UpdateUserViewModel }
+  from 'src/app/adapter/primary/views/view-model/user/update-user.view-model'
+import { User } from 'src/app/core/domain/user/user'
 
 @Component({
-  name: 'update-user-form'
+  name: 'update-user-form',
 })
 export default class UpdateUserFormComponent extends Vue {
-
   @Prop({}) readonly userToUpdate: User | null | undefined
 
-  mounted(){
+  mounted () {
     this.form = {
       firstname: this.userToUpdate?.firstname,
       lastname: this.userToUpdate?.lastname,
@@ -137,14 +142,13 @@ export default class UpdateUserFormComponent extends Vue {
     email: '',
     oldPassword: '',
     newPassword: '',
-    file: null
+    file: null,
   }
 
   isPwd = true
 
-  onSubmit() {
-    this.$emit('submitForm', this.form);
+  onSubmit () {
+    this.$emit('submitForm', this.form)
   }
-
 }
 </script>

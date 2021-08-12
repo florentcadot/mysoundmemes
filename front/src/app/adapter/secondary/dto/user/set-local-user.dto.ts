@@ -1,4 +1,4 @@
-export interface SetLocalUserDto {
+export type SetLocalUserDto = {
   id: string
   accessToken: string
   email: string

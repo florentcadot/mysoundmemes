@@ -1,4 +1,4 @@
-export interface UpdateUserForm {
+export type UpdateUserForm = {
   firstname?: string
   lastname?: string
   email?: string

@@ -1,3 +1,3 @@
-export interface ResetUserPasswordRequestDto {
+export type ResetUserPasswordRequestDto = {
   password: string
 }

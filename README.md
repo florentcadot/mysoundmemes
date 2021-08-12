@@ -4,7 +4,7 @@
 
 #### General
 
-Web application to store and organize sound samples. **[Demo here](https://mysoundmemes.florentcadot.com/)**
+Web application to store and organize sound samples.
 
 #### Tech
 The whole project will try to fit a clean architecture approach.
@@ -12,59 +12,10 @@ The whole project will try to fit a clean architecture approach.
 * Front: VueJs using Quasar framework --> https://quasar.dev/
 * Back: Nestjs --> https://nestjs.com/
 * Database: MongoDB
-* Storage: AWS S3 Bucket 
-* Prod: AWS EC2, Route53, nginx
+* Storage: AWS S3 Bucket
 
-## Local development
-
-**Requirements**
-
-* Front 
-
-````
-yarn global add @quasar/cli
-
-or
-
-npm install -g @quasar/cli
-````
-
-* Back
-
-````
-yarn global add @nestjs/cli
-
-or
-
-npm i -g @nestjs/cli
-````
-
-* Database : 
-  * Install mongodb https://docs.mongodb.com/manual/administration/install-community/ 
-  * Create a database
-  * Create a user
-  
-Example using Mongo shell:
-````
-mongo
-use mysoundmemes
-db.createUser(
-  {
-    user: "testUser",
-    pwd: "justdoit",
-    roles: ["readWrite", "dbAdmin"]
-}
-)
-exit
-````
-
-* Storage :  
-  - Create an AWS account  
-  - Create a private S3 bucket ( for only user sound file storage)
-  - Create a public S3 bucket
-
-### Ensure to set the correct config variables (see **back/config** files).
-###Config variables example:
+### Backend requirement
+**Create a .env file in /back with the following variables**
 ```
 export AWS_PRIVATE_BUCKET_NAME='myprivatebucket'
 export AWS_REGION='eu-west-1'
@@ -87,12 +38,43 @@ export DATABASE_NAME='iamadbname'
 export EMAIL_USER='example@example.com'
 export EMAIL_PASSWORD='iamapassword'
 
+export BACKEND_PORT=3000
 export FRONT_BASE_URL='http://localhost:8080'
-
 ```
 
+### AWS S3
+**Create an user in IAM and attach the following policy**
+
+````json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:ListAllMyBuckets"
+            ],
+            "Resource": "arn:aws:s3:::*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::mysoundmemes-bucket",
+                "arn:aws:s3:::mysoundmemes-bucket/*"
+            ]
+        }
+    ]
+}
+
+````
 
 
+### Launch using docker and docker-compose
+```shell
+docker-compose up
+```
 
 ## Resources
 

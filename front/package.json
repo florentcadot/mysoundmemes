@@ -1,40 +1,39 @@
 {
-  "name": "soundboard",
+  "name": "mysoundmemes",
   "version": "0.0.1",
   "description": "Save epic sounds from your friends",
-  "productName": "My soundboard",
-  "author": "Florent Cadot <florentcadot.dev@gmail.com>",
+  "productName": "mysoundmemes",
+  "author": "florentcadot <florentcadot.dev@gmail.com>",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.ts,.vue ./",
-    "test": "echo \"No test specified\" && exit 0",
+    "serve": "quasar dev",
     "build": "quasar build",
-    "start": "node server.js"
+    "lint": "eslint --ext .js,.ts,.vue ./ --fix src",
+    "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/app": "^2.0.0",
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
-    "connect-history-api-fallback": "^1.6.0",
     "core-js": "^3.6.5",
-    "express": "^4.17.1",
     "inversify": "^5.1.1",
     "inversify-inject-decorators": "^3.1.0",
     "quasar": "^1.0.0",
-    "reflect-metadata": "^0.1.13",
-    "serve-static": "^1.14.1",
     "vue-class-component": "^7.2.2",
     "vue-property-decorator": "^8.3.0",
-    "vuex-module-decorators": "^1.0.1",
-    "eslint": "^7.21.0",
-    "@types/node": "^10.17.15",
-    "@typescript-eslint/eslint-plugin": "^4.16.1",
-    "@typescript-eslint/parser": "^4.16.1",
-    "babel-eslint": "^10.0.1",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-vue": "^7.7.0"
+    "vuex-module-decorators": "^1.0.1"
   },
   "devDependencies": {
+    "@quasar/app": "^2.0.0",
+    "@types/node": "^12.20.21",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
+    "eslint": "^8.10.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "reflect-metadata": "^0.1.13"
   },
   "browserslist": [
     "last 10 Chrome versions",

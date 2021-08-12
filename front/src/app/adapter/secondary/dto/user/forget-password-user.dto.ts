@@ -1,3 +1,3 @@
-export interface ForgetPasswordUserRequestDto {
+export type ForgetPasswordUserRequestDto = {
   email: string
 }

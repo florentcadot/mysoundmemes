@@ -12,6 +12,7 @@ import { RealTokenService } from '../../src/adapter/secondary/service/token/real
 import { InMemoryEmailService } from '../../src/adapter/secondary/service/email/in-memory.email.service';
 import { RealUniqueIdService } from '../../src/adapter/secondary/service/unique-id/real.unique-id.service';
 import { RealFileService } from '../../src/adapter/secondary/service/file/real.file.service';
+import {ConfigService} from '@nestjs/config'
 
 
 let signupUser: SignupUser
@@ -33,11 +34,13 @@ describe('signup user', () => {
         },
         {
           provide: tokenToken,
-          useFactory: () => new RealTokenService(),
+          useFactory: (configService) => new RealTokenService(configService),
+          inject: [ConfigService]
         },
         {
           provide: emailToken,
-          useFactory: () => new InMemoryEmailService(),
+          useFactory: (configService) => new InMemoryEmailService(configService),
+          inject: [ConfigService]
         },
         {
           provide: uniqueIdToken,
@@ -45,8 +48,8 @@ describe('signup user', () => {
         },
         {
           provide: fileToken,
-          useFactory: (uniqueIdService) => new RealFileService(uniqueIdService),
-          inject: [uniqueIdToken]
+          useFactory: (uniqueIdService, configService) => new RealFileService(uniqueIdService, configService),
+          inject: [uniqueIdToken, ConfigService]
         },
         {
           provide: signupUserToken,

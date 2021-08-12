@@ -4,25 +4,22 @@
 
 <script lang="ts">
 
-import { Vue, Component } from 'vue-property-decorator';
-import { UserStore } from 'src/store/user.store';
-import { getModule } from 'vuex-module-decorators';
+import { Vue, Component } from 'vue-property-decorator'
+import { UserStore } from 'src/store/user.store'
+import { getModule } from 'vuex-module-decorators'
 
 @Component
 export default class ActivateAccountPage extends Vue {
-
-  get userStore(): UserStore {
-    return getModule(UserStore, this.$store);
+  get userStore (): UserStore {
+    return getModule(UserStore, this.$store)
   }
 
 
-  mounted() {
+  mounted () {
     const activationToken = this.$router.currentRoute.query.token
-    if(activationToken && typeof activationToken === 'string'){
+    if (activationToken && typeof activationToken === 'string') {
       this.userStore.activateUserAccount(activationToken)
     }
   }
-
-
 }
 </script>

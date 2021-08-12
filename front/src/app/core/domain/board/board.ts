@@ -1,5 +1,5 @@
-interface Props {
-  id?: string
+type Props = {
+  id: string
   userId: string
   title: string
   color: string
@@ -7,27 +7,25 @@ interface Props {
 }
 
 export class Board {
+  constructor (private props: Props) {}
 
-  constructor(private props: Props) {}
-
-  get id(): string | undefined {
+  get id (): string | undefined {
     return this.props.id
   }
 
-  get userId(): string {
+  get userId (): string {
     return this.props.userId
   }
 
-  get title(): string {
+  get title (): string {
     return this.props.title
   }
 
-  get color(): string {
+  get color (): string {
     return this.props.color
   }
 
-  get avatar(): string | undefined {
+  get avatar (): string | undefined {
     return this.props.avatar
   }
-
 }

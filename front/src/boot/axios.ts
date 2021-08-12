@@ -1,20 +1,19 @@
-import axios, { AxiosInstance } from 'axios';
-import { boot } from 'quasar/wrappers';
-import { BASE_URL } from 'src/config/env.config';
+import axios, { AxiosInstance } from 'axios'
+import { boot } from 'quasar/wrappers'
 
 declare module 'vue/types/vue' {
-  interface Vue {
+  // @ts-ignore
+  type Vue = {
     $axios: AxiosInstance;
   }
 }
 
 export const axiosInstance = axios.create({
-  baseURL: `${BASE_URL}/api`,
+  baseURL: `${process.env.BASE_URL}/api`,
   // headers: {"Access-Control-Allow-Origin": "*"}
 })
 
 
 export default boot(({ Vue }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  Vue.prototype.$axios = axiosInstance;
-});
+  Vue.prototype.$axios = axiosInstance
+})

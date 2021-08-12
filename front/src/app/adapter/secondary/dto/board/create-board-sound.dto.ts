@@ -1,4 +1,4 @@
-export interface CreateBoardSoundResponseDto {
+export type CreateBoardSoundResponseDto = {
   id: string
   boardId: string
   userId: string
@@ -6,7 +6,7 @@ export interface CreateBoardSoundResponseDto {
   file: string
 }
 
-export interface CreateBoardSoundRequestDto {
+export type CreateBoardSoundRequestDto = {
   boardId: string
   title: string
   file?: File

@@ -1,4 +1,4 @@
-export interface UpdateBoardViewModel {
+export type UpdateBoardViewModel = {
   id: string
   title?: string
   color?: string

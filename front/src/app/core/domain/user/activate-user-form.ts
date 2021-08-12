@@ -1,3 +1,3 @@
-export interface ActivateUserForm {
+export type ActivateUserForm = {
   activationToken: string
 }

@@ -1,4 +1,4 @@
-export interface SignupUserViewModel {
+export type SignupUserViewModel = {
   firstname: string
   lastname: string
   email: string

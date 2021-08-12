@@ -1,3 +1,3 @@
-export interface ForgetPasswordUserForm {
+export type ForgetPasswordUserForm = {
   email: string
 }

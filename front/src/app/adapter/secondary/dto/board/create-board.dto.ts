@@ -1,10 +1,10 @@
-export interface CreateBoardRequestDto {
+export type CreateBoardRequestDto = {
   title: string
   color: string
   file?: File
 }
 
-export interface CreateBoardResponseDto {
+export type CreateBoardResponseDto = {
   id: string
   userId: string
   title: string

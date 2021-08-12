@@ -1,9 +1,8 @@
-
-export interface GetBoardSoundListRequestDto {
+export type GetBoardSoundListRequestDto = {
   boardId: string
 }
 
-export interface GetBoardSoundListResponseDto {
+export type GetBoardSoundListResponseDto = {
   id: string
   boardId: string
   userId: string

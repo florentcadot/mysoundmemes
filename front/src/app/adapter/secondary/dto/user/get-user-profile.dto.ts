@@ -1,10 +1,10 @@
-import { UserRole } from 'src/app/core/domain/user/user';
+import { UserRole } from 'src/app/core/domain/user/user'
 
-export interface GetUserProfileRequestDto {
+export type GetUserProfileRequestDto = {
   email: string
 }
 
-export interface GetUserProfileResponseDto {
+export type GetUserProfileResponseDto = {
   id: string
   firstname: string
   lastname: string

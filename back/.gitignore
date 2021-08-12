@@ -11,3 +11,5 @@ logs
 /lerna-debug.log*
 
 /legacy
+
+.env

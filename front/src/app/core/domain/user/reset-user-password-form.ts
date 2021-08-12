@@ -1,4 +1,4 @@
-export interface ResetUserPasswordForm {
+export type ResetUserPasswordForm = {
   password: string
   token: string
 }

@@ -1,5 +1,5 @@
-import { NotifierType } from 'src/app/core/domain/notifier-type';
+import { NotifierType } from 'src/app/core/domain/notifier-type'
 
-export interface NotifierService {
+export type NotifierService = {
   open(props: { message: string, type: NotifierType}): void
 }

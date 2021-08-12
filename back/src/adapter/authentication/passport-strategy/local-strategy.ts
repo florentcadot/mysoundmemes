@@ -2,16 +2,16 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-local';
 import { Authentication } from '../authentication';
-import { LOGIN_PASSWORD_FIELD, LOGIN_USERNAME_FIELD } from '../../../../config/auth.config';
 import { UserLoginPayload } from '../type/user-login-payload.type';
+import {ConfigService} from '@nestjs/config'
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
 
-  constructor(private authService: Authentication) {
+  constructor(private config: ConfigService, private authService: Authentication) {
     super({
-      usernameField: LOGIN_USERNAME_FIELD,
-      passwordField: LOGIN_PASSWORD_FIELD,
+      usernameField: config.get<string>('LOGIN_USERNAME_FIELD'),
+      passwordField: config.get<string>('LOGIN_PASSWORD_FIELD'),
     })
   }
 

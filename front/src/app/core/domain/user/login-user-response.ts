@@ -1,6 +1,6 @@
-import { UserRole } from 'src/app/core/domain/user/user';
+import { UserRole } from 'src/app/core/domain/user/user'
 
-export interface LoginUserResponse {
+export type LoginUserResponse = {
   accessToken: string
   id: string
   firstname: string

@@ -1,3 +1,3 @@
-export interface ForgetPasswordUserViewModel {
+export type ForgetPasswordUserViewModel = {
   email: string
 }

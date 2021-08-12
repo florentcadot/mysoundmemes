@@ -1,4 +1,4 @@
-interface Props {
+type Props = {
   id?: string
   firstname: string
   lastname: string
@@ -11,35 +11,33 @@ interface Props {
 export type UserRole = 'user' | 'admin'
 
 export class User {
+  constructor (private props: Props) {}
 
-  constructor(private props: Props) {}
-
-  get id(): string | undefined {
+  get id (): string | undefined {
     return this.props.id
   }
 
-  get firstname(): string {
+  get firstname (): string {
     return this.props.firstname
   }
 
-  get lastname(): string {
+  get lastname (): string {
     return this.props.lastname
   }
 
-  get email(): string {
+  get email (): string {
     return this.props.email
   }
 
-  get password(): string | undefined {
+  get password (): string | undefined {
     return this.props.password
   }
 
-  get role(): UserRole {
+  get role (): UserRole {
     return this.props.role
   }
 
-  get avatar(): string | undefined {
+  get avatar (): string | undefined {
     return this.props.avatar
   }
-
 }

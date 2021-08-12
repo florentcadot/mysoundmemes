@@ -5,7 +5,8 @@
       <div class="home-page-content">
 
         <div class="row justify-center">
-          <img class="login-img"  src="../assets/sb-logo-primary.png">
+          <img class="login-img"
+               src="../assets/sb-logo-primary.png">
         </div>
 
         <div class="row justify-center">
@@ -32,7 +33,8 @@
               />
             </q-item>
 
-            <q-item style="width:280px" class="q-mt-lg">
+            <q-item style="width:280px"
+                    class="q-mt-lg">
               <q-btn label="Ok"
                      type="submit"
                      color="secondary"
@@ -47,7 +49,11 @@
                      class="q-ml-sm" />
             </q-item>
 
-            <q-item style="width:280px" clickable to="/login" exact v-ripple>
+            <q-item style="width:280px"
+                    clickable
+                    to="/login"
+                    exact
+                    v-ripple>
               <q-item-section>Login</q-item-section>
             </q-item>
 
@@ -62,39 +68,37 @@
 
 <script lang="ts">
 
-import { Vue, Component } from 'vue-property-decorator';
-import { UserStore } from 'src/store/user.store';
-import { getModule } from 'vuex-module-decorators';
-import { ForgetPasswordUserViewModel } from 'src/app/adapter/primary/views/view-model/user/forget-password-user.view-model';
+import { Vue, Component } from 'vue-property-decorator'
+import { UserStore } from 'src/store/user.store'
+import { getModule } from 'vuex-module-decorators'
+import { ForgetPasswordUserViewModel }
+  from 'src/app/adapter/primary/views/view-model/user/forget-password-user.view-model'
 
 @Component
 export default class ForgetPasswordPage extends Vue {
-
-  mounted(){
-    const email  = this.$router.currentRoute.query.email
-    if(email && typeof email === 'string'){
+  mounted () {
+    const email = this.$router.currentRoute.query.email
+    if (email && typeof email === 'string') {
       this.forgetPasswordForm.email = email
     }
   }
 
-  get userStore(): UserStore {
-    return getModule(UserStore, this.$store);
+  get userStore (): UserStore {
+    return getModule(UserStore, this.$store)
   }
 
   forgetPasswordForm: ForgetPasswordUserViewModel = {
     email: '',
-  };
+  }
 
-  onSubmit() {
+  onSubmit () {
     this.userStore.handleForgetPassword(this.forgetPasswordForm)
   }
 
-  onReset() {
+  onReset () {
     this.forgetPasswordForm = {
-      email: ''
-    };
+      email: '',
+    }
   }
-
-
 }
 </script>

@@ -1,20 +1,20 @@
 import { FileService} from '../../../../core/port/service/file.service.port';
 import { S3 } from 'aws-sdk';
 import { UniqueIdService } from '../../../../core/port/service/unique-id.service.port';
-import { AWS_PRIVATE_BUCKET_NAME, AWS_PUBLIC_BUCKET_NAME } from '../../../../../config/bucket.config';
 import { Readable } from 'stream';
 import { PrivateFileUrl } from '../../../../core/domain/private-file-url';
+import {ConfigService} from '@nestjs/config'
 
 
 export class RealFileService implements FileService {
 
-  constructor(private uniqueIdService: UniqueIdService) {}
+  constructor(private uniqueIdService: UniqueIdService, private config: ConfigService) {}
 
   async uploadPrivateFile(props: { dataBuffer: Buffer , dataMimetype; string}): Promise<string> {
     const s3 = new S3()
 
     const uploadResult = await s3.upload({
-      Bucket: AWS_PRIVATE_BUCKET_NAME,
+      Bucket: this.config.get<string>('AWS_PRIVATE_BUCKET_NAME'),
       Body: props.dataBuffer,
       Key: `${this.uniqueIdService.generate()}`,
       ContentType: props.dataMimetype,
@@ -26,7 +26,7 @@ export class RealFileService implements FileService {
   public async getPrivateFile(fileKey: string): Promise<Readable> {
     const s3 = new S3()
     const stream = await s3.getObject({
-      Bucket: AWS_PRIVATE_BUCKET_NAME,
+      Bucket: this.config.get<string>('AWS_PRIVATE_BUCKET_NAME'),
       Key: fileKey
     })
       .createReadStream();
@@ -37,7 +37,7 @@ export class RealFileService implements FileService {
   public async generatePresignedUrl(fileKey: string) {
     const s3 = new S3()
     return s3.getSignedUrlPromise('getObject', {
-      Bucket: AWS_PRIVATE_BUCKET_NAME,
+      Bucket: this.config.get<string>('AWS_PRIVATE_BUCKET_NAME'),
       Key: fileKey
     })
   }
@@ -57,7 +57,7 @@ export class RealFileService implements FileService {
   async deletePrivateFile(fileKey: string): Promise<void> {
     const s3 = new S3()
     await s3.deleteObject({
-      Bucket: AWS_PRIVATE_BUCKET_NAME,
+      Bucket: this.config.get<string>('AWS_PRIVATE_BUCKET_NAME'),
       Key: fileKey,
     }).promise();
   }
@@ -65,7 +65,7 @@ export class RealFileService implements FileService {
   async uploadPublicFile(props: { dataBuffer: Buffer, dataMimetype: string }): Promise<{key: string, url: string}> {
     const s3 = new S3()
     const uploadResult = await s3.upload({
-      Bucket: AWS_PUBLIC_BUCKET_NAME,
+      Bucket: this.config.get<string>('AWS_PUBLIC_BUCKET_NAME'),
       Body: props.dataBuffer,
       Key: `${this.uniqueIdService.generate()}`,
       ContentType: props.dataMimetype,
@@ -77,7 +77,7 @@ export class RealFileService implements FileService {
   async deletePublicFile(fileKey: string): Promise<void> {
     const s3 = new S3()
     await s3.deleteObject({
-      Bucket: AWS_PUBLIC_BUCKET_NAME,
+      Bucket: this.config.get<string>('AWS_PUBLIC_BUCKET_NAME'),
       Key: fileKey,
     }).promise();
   }
@@ -85,7 +85,7 @@ export class RealFileService implements FileService {
   async getPublicFileList(): Promise<{key: string}[]> {
     const s3 = new S3()
     const result = await s3.listObjectsV2({
-        Bucket: AWS_PUBLIC_BUCKET_NAME,
+        Bucket: this.config.get<string>('AWS_PUBLIC_BUCKET_NAME'),
     }).promise()
      return result.Contents.map(file => ({key: file.Key}))
   }
@@ -93,7 +93,7 @@ export class RealFileService implements FileService {
   async getPrivateFileList(): Promise<{key: string}[]> {
     const s3 = new S3()
     const result = await s3.listObjectsV2({
-        Bucket: AWS_PRIVATE_BUCKET_NAME,
+        Bucket: this.config.get<string>('AWS_PRIVATE_BUCKET_NAME'),
     }).promise()
     return result.Contents.map(file => ({key: file.Key}))
   }

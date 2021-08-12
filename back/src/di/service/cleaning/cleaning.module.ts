@@ -16,7 +16,12 @@ import { FileModule } from '../file/file.module';
     {
       provide   : cleaningToken,
       useFactory: (userRepository, boardRepository, soundRepository, fileService) => new RealCleaningService(userRepository, boardRepository, soundRepository, fileService),
-      inject:[userRepositoryToken, boardRepositoryToken, soundRepositoryToken, fileToken]
+      inject:[
+        userRepositoryToken,
+        boardRepositoryToken,
+        soundRepositoryToken,
+        fileToken
+      ]
     },
   ],
   exports:[cleaningToken]

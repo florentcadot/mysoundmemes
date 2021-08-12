@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  back:
+    container_name: mysoundmemes_back
+    image: mysoundmemes-back
+    build:
+      context: ./back
+      target: production
+    ports:
+      - '3000:3000'
+    networks:
+      - mysoundmemes-network
+    command: npm run start:prod
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:5.0.5
+    container_name: mongodb
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./db/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./db/data:/data/db
+    networks:
+      - mysoundmemes-network
+
+  front:
+    container_name: mysoundmemes_front
+    image: mysoundmemes-front
+    build:
+      context: ./front
+      target: production
+    restart: on-failure
+    ports:
+      - '8080:80'
+    networks:
+      - mysoundmemes-network
+networks:
+  mysoundmemes-network:
+    driver: bridge

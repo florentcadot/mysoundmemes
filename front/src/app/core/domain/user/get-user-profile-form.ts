@@ -1,3 +1,3 @@
-export interface GetUserProfileForm {
+export type GetUserProfileForm = {
   email: string
 }

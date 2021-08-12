@@ -1,4 +1,4 @@
-export interface LoginUserForm {
+export type LoginUserForm = {
   email: string
   password: string
 }

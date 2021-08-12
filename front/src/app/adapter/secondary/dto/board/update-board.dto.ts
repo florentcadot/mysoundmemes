@@ -1,11 +1,11 @@
-export interface UpdateBoardRequestDto {
+export type UpdateBoardRequestDto = {
   id: string
   title?: string
   color?: string
   file?: File
 }
 
-export interface UpdateBoardResponseDto {
+export type UpdateBoardResponseDto = {
   id: string
   userId: string
   title: string

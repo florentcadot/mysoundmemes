@@ -1,6 +1,6 @@
-import { UserRole } from 'src/app/core/domain/user/user';
+import { UserRole } from 'src/app/core/domain/user/user'
 
-export interface UpdateUserRequestDto {
+export type UpdateUserRequestDto = {
   firstname?: string
   lastname?: string
   email?: string,
@@ -11,7 +11,7 @@ export interface UpdateUserRequestDto {
   file?: null | File
 }
 
-export interface UpdateUserResponseDto {
+export type UpdateUserResponseDto = {
   id: string
   firstname: string
   lastname: string

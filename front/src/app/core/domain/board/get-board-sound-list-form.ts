@@ -1,3 +1,3 @@
-export interface GetBoardSoundListForm {
+export type GetBoardSoundListForm = {
   boardId: string
 }

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <q-layout view="hHh Lpr lff" class="shadow-2"
+    <q-layout view="hHh Lpr lff"
+              class="shadow-2"
     >
       <q-page-container>
         <router-view />
@@ -11,7 +12,7 @@
 
 <script lang="ts">
 
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator'
 
 @Component
 export default class HomeLayout extends Vue {
