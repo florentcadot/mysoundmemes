@@ -1,0 +1,65 @@
+# compiled output
+/back/dist
+/back/node_modules
+/front/node_modules
+/front/dist
+
+# Logs
+logs
+*.log
+/back/npm-debug.log*
+/back/yarn-debug.log*
+/back/yarn-error.log*
+/back/lerna-debug.log*
+
+# OS
+.DS_Store
+
+# Tests
+/back/coverage
+/back/.nyc_output
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+
+.DS_Store
+.thumbs.db
+
+# Quasar core related directories
+.quasar
+
+# Cordova related directories and files
+/front/src-cordova/node_modules
+/front/src-cordova/platforms
+/front/src-cordova/plugins
+/front/src-cordova/www
+
+# Capacitor related directories and files
+/front/src-capacitor/www
+/front/src-capacitor/node_modules
+
+# BEX related directories and files
+/front/src-bex/www
+/front/src-bex/js/core
+
+# Log files
+/front/npm-debug.log*
+/front/yarn-debug.log*
+/front/yarn-error.log*
+
+
+/legacy

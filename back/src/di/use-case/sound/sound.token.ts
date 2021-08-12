@@ -1,0 +1,5 @@
+export const soundRepositoryToken: unique symbol  = Symbol('SoundRepository')
+export const createSoundToken: unique symbol  = Symbol('CreateSoundUseCase')
+export const getSoundListToken: unique symbol  = Symbol('GetSoundListUseCase')
+export const updateSoundToken: unique symbol  = Symbol('UpdateSoundUseCase')
+export const deleteSoundToken: unique symbol  = Symbol('DeleteSoundUseCase')

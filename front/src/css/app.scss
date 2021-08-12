@@ -1,0 +1,95 @@
+@import "quasar.variables";
+
+@font-face {
+  font-family: Montserrat-Bold;
+  src: url(../app/adapter/primary/views/assets/font/Montserrat-Bold.woff);
+}
+
+.secondary-color {
+  color: $secondary;
+}
+
+.home-page-container {
+  font-family: 'Montserrat-Bold';
+  color: $secondary;
+  background-color: $primary;
+  height: 100vh;
+  padding: 40px;
+}
+
+.home-page-content {
+  padding: 30px;
+  border: solid $secondary;
+}
+
+.home-img {
+  max-width: 60%;
+}
+
+.login-img {
+  width: 20%;
+}
+
+.app-page-container {
+  font-family: 'Montserrat-Bold';
+}
+
+.breadcrumbs {
+  padding-left: 70px;
+  @media (max-width: 500px){
+    padding-left: 10px;
+  }
+}
+
+.breadcrumbs-container {
+  position: fixed;
+  top: 50px;
+  z-index: 1;
+  padding: 20px;
+  background: $secondary;
+  width: 100%;
+}
+
+.router-view-container {
+  position: absolute;
+  top: 90px;
+  width: 100%;
+}
+
+.board-list-content-container{
+  overflow-y: auto;
+}
+
+.board-item {
+  width: 100%;
+  min-width: 350px;
+  max-width: 600px;
+}
+
+.audio-player {
+  width: 100%;
+}
+
+.action-button {
+  position: fixed;
+  top: 50px;
+  padding: 10px;
+  right: 0px;
+  z-index: 1
+}
+
+.dialog-content {
+  font-family: 'Montserrat-Bold';
+  color: $secondary;
+  background-color: $primary;
+  padding: 30px;
+  border: solid $secondary;
+}
+
+.form-container {
+  font-family: 'Montserrat-Bold';
+  color: $secondary;
+  background-color: $primary;
+  padding: 30px;
+  border: solid $secondary;
+}

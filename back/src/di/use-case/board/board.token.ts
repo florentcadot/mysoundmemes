@@ -1,0 +1,6 @@
+export const boardRepositoryToken: unique symbol  = Symbol('BoardRepository')
+export const createBoardToken: unique symbol  = Symbol('CreateBoardUseCase')
+export const getBoardListToken: unique symbol  = Symbol('GetBoardListUseCase')
+export const getBoardToken: unique symbol  = Symbol('GetBoardUseCase')
+export const updateBoardToken: unique symbol  = Symbol('UpdateBoardUseCase')
+export const deleteBoardToken: unique symbol  = Symbol('DeleteBoardUseCase')

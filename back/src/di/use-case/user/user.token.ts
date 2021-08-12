@@ -1,0 +1,7 @@
+export const userRepositoryToken: unique symbol  = Symbol('UserRepository')
+export const getUserToken: unique symbol  = Symbol('GetUserUseCase')
+export const updateUserToken: unique symbol  = Symbol('UpdateUserUseCase')
+export const signupUserToken: unique symbol  = Symbol('SignupUserUseCase')
+export const activateUserToken: unique symbol  = Symbol('ActivateUserUseCase')
+export const forgetUserPasswordToken: unique symbol  = Symbol('ForgetUserPasswordUseCase')
+export const resetUserPasswordToken: unique symbol  = Symbol('ResetUserPasswordUseCase')
